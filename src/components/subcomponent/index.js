@@ -18,6 +18,12 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     
   },
+  paper1: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    
+  },
  
 });
 
@@ -43,7 +49,7 @@ function FullWidthGrid(props) {
             
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Paper className={classes.paper} >
+          <Paper className={classes.paper1} >
             <GridBottom/>
           </Paper>  
         </Grid>
