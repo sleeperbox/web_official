@@ -13,13 +13,13 @@ export default class GridForm extends Component {
 
     render () {
         
-     
+        const grid = {
+            height: 650,
+        } 
         return (
-        <div>
-            <div>
-                <h1>WAY</h1>
-                <p>Sign Up or Log in</p>
-            </div>
+        <div style={grid}>
+            <h1>WAY</h1>
+            <p>Sign Up or Log in</p>
             <Form/>
         </div>
         );

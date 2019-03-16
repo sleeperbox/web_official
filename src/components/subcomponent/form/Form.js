@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import axios from "axios";
+
 
 function TabContainer(props) {
   return (
@@ -28,7 +30,6 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    
   },
   tabRoot: {
     minWidth: '50%',
@@ -40,14 +41,53 @@ class NavTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        value: 0,
+      value: 0,
+      email: "",
+      username: "",
+      first_name: "",
+      last_name: "",
+      password: "",
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
-  handleChange = (event, value) => {
+
+  moveTab = (event, value) => {
     this.setState({ value });
   };
 
+  handleChange(event) {
+    let target = event.target;
+    let value = target.value;
+    let name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit() {
+    axios({
+      method: "POST",
+      url: "http://localhost:8080/api/register",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      data: {
+        email: this.state.email,
+        username: this.state.username,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        password: this.state.password
+      }
+    }).then(result =>
+      this.setState({
+        warning: result.data,
+        isLogin: result.data.auth,
+        token: result.data.token
+      })
+    );
+  }
   
   render() {
     const btnColor = {
@@ -77,63 +117,90 @@ class NavTabs extends React.Component {
             <Tabs 
               variant="fullWidth" 
               value={value} 
-              onChange={this.handleChange} 
+              onChange={this.moveTab} 
               indicatorColor="primary"
               textColor="primary"
              
             >
-              <LinkTab label="telepon" href="page1" classes={{ root: classes.tabRoot }}/>
-              <LinkTab label="email" href="page2" classes={{ root: classes.tabRoot }}/>
+              <LinkTab label="telepon" classes={{ root: classes.tabRoot }}/>
+              <LinkTab label="email" classes={{ root: classes.tabRoot }}/>
             </Tabs>
           </AppBar>
-          {value === 0 &&<TextField
+          {value === 0 && <TextField
           id="outlined-text-input"
           label="Telepon"
           className={classes.textField}
           type="number"
-          autoComplete="current-password"
           margin="normal"
+          fullWidth={true}
           variant="outlined"
+          name="phone"
+          onChange={this.handleChange}
         />}
           {value === 1 &&   <TextField
           id="outlined-text-input"
           label="Email"
+          fullWidth={true}
           className={classes.textField}
           type="email"
-          autoComplete="current-password"
           margin="normal"
           variant="outlined"
+          name="email"
+          onChange={this.handleChange}
         />}
         </div>
 
         <TextField
           id="outlined-text-input"
-          label="Full Name"
-          className={classes.textField}
-          type="text"
-          autoComplete="current-password"
-          margin="normal"
-          variant="outlined"
-        />
-          <TextField
-          id="outlined-text-input"
           label="Username"
           className={classes.textField}
           type="text"
+          fullWidth={true}
           autoComplete="current-password"
           margin="normal"
           variant="outlined"
+          name="username"
+          onChange={this.handleChange}
+        />
+          <TextField
+          id="outlined-text-input"
+          label="First Name"
+          className={classes.textField}
+          type="text"
+          fullWidth={true}
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
+          name="first_name"
+          onChange={this.handleChange}
+        />
+        <TextField
+          id="outlined-text-input"
+          label="Last Name"
+          className={classes.textField}
+          type="text"
+          fullWidth={true}
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
+          name="last_name"
+          onChange={this.handleChange}
         />
           <TextField
           id="outlined-password-input"
           label="Password"
           className={classes.textField}
           type="password"
+          fullWidth={true}
           autoComplete="current-password"
           margin="normal"
           variant="outlined"
+          name="password"
+          onChange={this.handleChange}
         />
-        <Button variant="contained" color="primary" className={classes.button} style={btnWidth}>
+          <br />
+          <br />
+        <Button variant="contained" color="primary" className={classes.button} style={btnWidth} onClick={this.handleSubmit}>
             Sign Up
         </Button>
       </form>
