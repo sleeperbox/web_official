@@ -28,6 +28,10 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    
+  },
+  tabRoot: {
+    minWidth: '50%',
   },
 });
 
@@ -39,6 +43,7 @@ class NavTabs extends React.Component {
         value: 0,
     };
   }
+  
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -48,6 +53,11 @@ class NavTabs extends React.Component {
     const btnColor = {
       background: '#dd5044',
       color: '#ffffff',
+      width: '100%'
+    }
+    const btnWidth = {
+      width: '100%'
+
     }
     const { classes } = this.props;
     const { value } = this.state;
@@ -55,7 +65,7 @@ class NavTabs extends React.Component {
     return (
       <form className={classes.container} noValidate autoComplete="off">
       
-      <Button variant="contained" className={classes.button}>
+      <Button variant="contained" className={classes.button} style={btnColor}>
                   Log in with google
                  
               </Button>
@@ -72,8 +82,8 @@ class NavTabs extends React.Component {
               textColor="primary"
              
             >
-              <LinkTab label="telepon" href="page1" />
-              <LinkTab label="email" href="page2" />
+              <LinkTab label="telepon" href="page1" classes={{ root: classes.tabRoot }}/>
+              <LinkTab label="email" href="page2" classes={{ root: classes.tabRoot }}/>
             </Tabs>
           </AppBar>
           {value === 0 &&<TextField
@@ -123,7 +133,7 @@ class NavTabs extends React.Component {
           margin="normal"
           variant="outlined"
         />
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button variant="contained" color="primary" className={classes.button} style={btnWidth}>
             Sign Up
         </Button>
       </form>
