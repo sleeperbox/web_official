@@ -14,7 +14,7 @@ export default class GridForm extends Component {
     render () {
         
         const grid = {
-            height: 650,
+            height: 658,
         } 
         return (
         <div style={grid}>

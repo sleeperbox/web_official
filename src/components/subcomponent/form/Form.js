@@ -133,7 +133,6 @@ class NavTabs extends React.Component {
           type="number"
           margin="normal"
           fullWidth={true}
-          variant="outlined"
           name="phone"
           onChange={this.handleChange}
         />}
@@ -144,7 +143,6 @@ class NavTabs extends React.Component {
           className={classes.textField}
           type="email"
           margin="normal"
-          variant="outlined"
           name="email"
           onChange={this.handleChange}
         />}
@@ -156,9 +154,7 @@ class NavTabs extends React.Component {
           className={classes.textField}
           type="text"
           fullWidth={true}
-          autoComplete="current-password"
           margin="normal"
-          variant="outlined"
           name="username"
           onChange={this.handleChange}
         />
@@ -168,9 +164,7 @@ class NavTabs extends React.Component {
           className={classes.textField}
           type="text"
           fullWidth={true}
-          autoComplete="current-password"
           margin="normal"
-          variant="outlined"
           name="first_name"
           onChange={this.handleChange}
         />
@@ -180,9 +174,7 @@ class NavTabs extends React.Component {
           className={classes.textField}
           type="text"
           fullWidth={true}
-          autoComplete="current-password"
           margin="normal"
-          variant="outlined"
           name="last_name"
           onChange={this.handleChange}
         />
@@ -192,12 +184,11 @@ class NavTabs extends React.Component {
           className={classes.textField}
           type="password"
           fullWidth={true}
-          autoComplete="current-password"
           margin="normal"
-          variant="outlined"
           name="password"
           onChange={this.handleChange}
         />
+         
           <br />
           <br />
         <Button variant="contained" color="primary" className={classes.button} style={btnWidth} onClick={this.handleSubmit}>
