@@ -11,12 +11,10 @@ export default class GridBottom extends Component {
     }
 
     render () {
-        const grid = {
-            height: 50,
-        } 
+        
      
         return (
-        <div style={grid}>
+        <div>
             <p>ini adalah grid handap</p>
         </div>
         );

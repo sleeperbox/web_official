@@ -8,7 +8,7 @@ import IndexGrid from './subcomponent/index';
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
-    background: '#f7f7f7f7', 
+    background: '#f7f7f7f7',
   },
   
 });

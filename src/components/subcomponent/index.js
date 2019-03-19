@@ -13,11 +13,18 @@ const styles = theme => ({
     flexGrow: 1,
   },
   paper: {
+    padding: theme.spacing.unit * 10,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    
+  },
+  paper1: {
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    
   },
-  
+ 
 });
 
 function FullWidthGrid(props) {
@@ -27,24 +34,22 @@ function FullWidthGrid(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        <Grid item xs={12} sm={3}>
-            
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Paper className={classes.paper}>
+        <Grid item xs={12} sm={6}>
+        
+        
+          <Paper className={classes.paper1}>
             <GridPost/>
           </Paper>  
         </Grid>
-        <Grid item xs={12} sm={3}>
+
+        <Grid item xs sm={6}>
           <Paper className={classes.paper}>
             <GridForm/>
-          </Paper>  
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          
+          </Paper>
+            
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Paper className={classes.paper} >
+          <Paper className={classes.paper1} >
             <GridBottom/>
           </Paper>  
         </Grid>
